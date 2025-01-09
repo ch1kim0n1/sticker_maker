@@ -42,10 +42,10 @@ def add_margin(filename):
     exp_img = np.full((height + (2 * mg), width + (2 * mg), 3), bg, np.float32)
     exp_img[mg:(height + mg), mg:(width + mg)] = ima
     ei = Image.fromarray(exp_img.astype(np.uint8))
-    if not os.path.exists("margins"):
-        os.mkdir("margins")
+    
+    # Just save the expanded image in the same directory as the original
     fn_no_pre = re.sub('^.*\/', '', filename)
-    path = f'margins/exp-{fn_no_pre}'
+    path = f'exp-{fn_no_pre}'
     ei.save(path)
     return path
 
